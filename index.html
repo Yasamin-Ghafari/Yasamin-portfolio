@@ -11,19 +11,25 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-one"></span>
+    <span class="orb orb-two"></span>
+    <span class="orb orb-three"></span>
+  </div>
   <div class="cursor-glow"></div>
 
   <header class="site-header">
-    <nav class="nav container">
+    <div class="nav container">
       <a href="#home" class="brand">YG<span>.</span></a>
-      <button class="menu-btn" aria-label="Open menu">☰</button>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact" class="nav-cta">Contact</a>
-      </div>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    </div>
+    <nav class="nav-links" id="site-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" class="nav-cta">Contact</a>
     </nav>
   </header>
 
@@ -31,8 +37,12 @@
     <section id="home" class="hero section-padding">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <div class="eyebrow">Junior Front-End Developer</div>
-          <h1>Building clean, responsive and user-focused digital experiences.</h1>
+          <div class="eyebrow animate-fade">Junior Front-End Developer</div>
+          <h1 class="hero-title">
+            <span class="line">Building clean, responsive</span>
+            <span class="line gradient-text">and user-focused</span>
+            <span class="line">digital experiences.</span>
+          </h1>
           <p class="hero-text">
             I am Yasamin Ghafari, a responsible and motivated Front-End Developer with professional experience in web and mobile application development. I enjoy transforming ideas into modern, maintainable and accessible interfaces.
           </p>
@@ -49,8 +59,11 @@
         </div>
 
         <div class="hero-visual reveal delay-1">
+          <div class="profile-ring"></div>
           <div class="profile-card glass">
-            <div class="avatar">YG</div>
+            <div class="avatar">
+              <img src="assets/images/profile.png" alt="Yasamin Ghafari illustration" class="profile-image profile-image--avatar" width="120" height="120" loading="eager" />
+            </div>
             <h2>Yasamin Ghafari</h2>
             <p>Front-End Developer</p>
             <div class="status"><span></span> Available for front-end roles</div>
@@ -62,23 +75,38 @@
       </div>
     </section>
 
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span>React.js</span><span>Next.js</span><span>React Native</span><span>Tailwind CSS</span><span>JavaScript</span><span>REST API</span><span>Git & GitHub</span><span>Responsive UI</span>
+        <span>React.js</span><span>Next.js</span><span>React Native</span><span>Tailwind CSS</span><span>JavaScript</span><span>REST API</span><span>Git & GitHub</span><span>Responsive UI</span>
+      </div>
+    </div>
+
     <section id="about" class="section-padding">
-      <div class="container split">
-        <div class="section-heading reveal">
-          <span>About Me</span>
-          <h2>A front-end developer who cares about product quality.</h2>
+      <div class="container about-layout">
+        <div class="about-photo reveal">
+          <div class="photo-frame glass">
+            <img src="assets/images/profile.png" alt="Yasamin Ghafari illustration" class="profile-image profile-image--about" width="480" height="560" loading="lazy" />
+            <div class="photo-badge">Front-End Developer</div>
+          </div>
         </div>
-        <div class="about-content reveal delay-1">
-          <p>
-            I have over one year of professional experience working on real-world projects, including AI-powered medical platforms, mobile applications and industrial Digital Twin web systems. My work focuses on responsive design, maintainable components, API integration and creating smooth user experiences.
-          </p>
-          <p>
-            I am responsible, detail-oriented and comfortable working both independently and inside collaborative teams. I value clear communication, continuous learning and delivering reliable results on time.
-          </p>
-          <div class="stats-grid">
-            <div><strong>1+</strong><span>Year Experience</span></div>
-            <div><strong>12+</strong><span>Live Web & Mobile Projects</span></div>
-            <div><strong>2</strong><span>Work Environments</span></div>
+        <div class="about-copy">
+          <div class="section-heading reveal">
+            <span>About Me</span>
+            <h2>A front-end developer who cares about product quality.</h2>
+          </div>
+          <div class="about-content reveal delay-1">
+            <p>
+              I have over one year of professional experience working on real-world projects, including AI-powered medical platforms, mobile applications and industrial Digital Twin web systems. My work focuses on responsive design, maintainable components, API integration and creating smooth user experiences.
+            </p>
+            <p>
+              I am responsible, detail-oriented and comfortable working both independently and inside collaborative teams. I value clear communication, continuous learning and delivering reliable results on time.
+            </p>
+            <div class="stats-grid">
+              <div class="stat-item"><strong data-count="1" data-suffix="+">0</strong><span>Year Experience</span></div>
+              <div class="stat-item"><strong data-count="12" data-suffix="+">0</strong><span>Live Web & Mobile Projects</span></div>
+              <div class="stat-item"><strong data-count="2">0</strong><span>Work Environments</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,12 +119,12 @@
           <h2>Tools and technologies I use to build modern interfaces.</h2>
         </div>
         <div class="skills-grid">
-          <article class="skill-card reveal"><h3>Core Front-End</h3><p>HTML5, CSS3, JavaScript ES6+, responsive layouts and semantic UI structure.</p></article>
-          <article class="skill-card reveal delay-1"><h3>Styling</h3><p>Tailwind CSS, Bootstrap, modern CSS, animations, gradients and component-based styling.</p></article>
-          <article class="skill-card reveal delay-2"><h3>Frameworks</h3><p>React.js, Next.js and React Native for web and mobile application development.</p></article>
-          <article class="skill-card reveal"><h3>Integration</h3><p>REST API integration, collaboration with backend developers and user-flow improvement.</p></article>
-          <article class="skill-card reveal delay-1"><h3>Workflow</h3><p>Git, GitHub, version control, team collaboration and AI-assisted development tools.</p></article>
-          <article class="skill-card reveal delay-2"><h3>Soft Skills</h3><p>Responsibility, teamwork, communication, problem solving and fast learning.</p></article>
+          <article class="skill-card reveal"><div class="skill-icon">⚡</div><h3>Core Front-End</h3><p>HTML5, CSS3, JavaScript ES6+, responsive layouts and semantic UI structure.</p></article>
+          <article class="skill-card reveal delay-1"><div class="skill-icon">🎨</div><h3>Styling</h3><p>Tailwind CSS, Bootstrap, modern CSS, animations, gradients and component-based styling.</p></article>
+          <article class="skill-card reveal delay-2"><div class="skill-icon">⚛️</div><h3>Frameworks</h3><p>React.js, Next.js and React Native for web and mobile application development.</p></article>
+          <article class="skill-card reveal"><div class="skill-icon">🔗</div><h3>Integration</h3><p>REST API integration, collaboration with backend developers and user-flow improvement.</p></article>
+          <article class="skill-card reveal delay-1"><div class="skill-icon">🛠️</div><h3>Workflow</h3><p>Git, GitHub, version control, team collaboration and AI-assisted development tools.</p></article>
+          <article class="skill-card reveal delay-2"><div class="skill-icon">🤝</div><h3>Soft Skills</h3><p>Responsibility, teamwork, communication, problem solving and fast learning.</p></article>
         </div>
       </div>
     </section>
@@ -111,6 +139,7 @@
           <article class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content glass">
+              <!-- <div class="timeline-logo">🏥</div> -->
               <div class="timeline-top"><h3>Front-End Developer</h3><span>Remote · Full Time</span></div>
               <h4>DrPal Company</h4>
               <p>Developed and maintained web and mobile applications for an AI-powered medical platform. Contributed to the DrPal mobile app using React Native, implemented responsive UI components, integrated APIs and used GitHub for collaboration.</p>
@@ -119,6 +148,7 @@
           <article class="timeline-item reveal delay-1">
             <div class="timeline-dot"></div>
             <div class="timeline-content glass">
+              <!-- <div class="timeline-logo">🏭</div> -->
               <div class="timeline-top"><h3>Front-End Developer</h3><span>On-site</span></div>
               <h4>Fanavaran Sabz Mena</h4>
               <p>Worked on an industrial Digital Twin web application, developed responsive interfaces and collaborated with technical teams to deliver scalable, user-friendly features for large-scale systems.</p>
@@ -135,29 +165,55 @@
           <h2>Projects that show my front-end development experience.</h2>
         </div>
         <div class="projects-grid">
-          <a class="project-card reveal" href="https://play.google.com/store/apps/details?id=com.saadrpalmobile&hl=en" target="_blank" rel="noopener"><span>01</span><h3>DrPal Mobile Application</h3><p>React Native healthcare mobile application. I contributed to the front-end implementation, user-facing screens, responsive mobile UI and app workflow improvements.</p></a>
-          <a class="project-card reveal delay-1" href="https://drpal.ai/" target="_blank" rel="noopener"><span>02</span><h3>DrPal AI Platform</h3><p>AI-powered healthcare ecosystem. I worked on responsive front-end interfaces, product pages and user experience improvements for web-based medical services.</p></a>
-          <a class="project-card reveal delay-2" href="https://elifit.drpal.ai/" target="_blank" rel="noopener"><span>03</span><h3>Elifit</h3><p>Health and nutrition web application developed with clean layout, responsive structure and user-friendly front-end components.</p></a>
-          <a class="project-card reveal" href="https://drdashti.drpal.ai" target="_blank" rel="noopener"><span>04</span><h3>Dr. Dashti Nutrition Platform</h3><p>Professional nutrition and health consultation website built as part of the DrPal ecosystem with responsive UI and clear service presentation.</p></a>
-          <a class="project-card reveal delay-1" href="https://drsaidpour.drpal.ai/" target="_blank" rel="noopener"><span>05</span><h3>Dr. Saidpour Platform</h3><p>Medical consultation website focused on modern UI implementation, responsive pages and smooth user navigation.</p></a>
-          <!-- <a class="project-card reveal delay-2" href="https://dratoosanutriplan.drpal.ai/" target="_blank" rel="noopener"><span>06</span><h3>Dr. Atoosa Nutrition Platforms</h3><p>Two websites for the same doctor, including Persian and English versions, developed for nutrition services with multilingual user experience and responsive front-end pages.</p></a> -->
-          <a class="project-card reveal" href="https://drnaserdiet.drpal.ai/" target="_blank" rel="noopener"><span>07</span><h3>Dr. Naser Diet Platform</h3><p>Doctor-focused nutrition website with responsive layouts, structured content and accessible user experience.</p></a>
-          <a class="project-card reveal delay-1" href="https://mana-x.ir" target="_blank" rel="noopener"><span>08</span><h3>Mana-X Digital Twin Platform</h3><p>Industrial Digital Twin web application experience focused on dashboard UI, scalable interfaces and technical team collaboration.</p></a>
+          <a class="project-card reveal" href="https://play.google.com/store/apps/details?id=com.saadrpalmobile&hl=en" target="_blank" rel="noopener">
+            <div class="project-thumb"><img src="assets/images/projects/drpal-mobile.svg" alt="DrPal Mobile Application preview" loading="lazy" /><span class="project-overlay">View Project →</span></div>
+            <div class="project-body"><span>01</span><h3>DrPal Mobile Application</h3><p>React Native healthcare mobile application. I contributed to the front-end implementation, user-facing screens, responsive mobile UI and app workflow improvements.</p></div>
+          </a>
+          <a class="project-card reveal delay-1" href="https://drpal.ai/" target="_blank" rel="noopener">
+            <div class="project-thumb"><img src="assets/images/projects/drpal-web.svg" alt="DrPal AI Platform preview" loading="lazy" /><span class="project-overlay">View Project →</span></div>
+            <div class="project-body"><span>02</span><h3>DrPal AI Platform</h3><p>AI-powered healthcare ecosystem. I worked on responsive front-end interfaces, product pages and user experience improvements for web-based medical services.</p></div>
+          </a>
+          <a class="project-card reveal delay-2" href="https://elifit.drpal.ai/" target="_blank" rel="noopener">
+            <div class="project-thumb"><img src="assets/images/projects/drpal-web.svg" alt="Elifit preview" loading="lazy" /><span class="project-overlay">View Project →</span></div>
+            <div class="project-body"><span>03</span><h3>Elifit</h3><p>Health and nutrition web application developed with clean layout, responsive structure and user-friendly front-end components.</p></div>
+          </a>
+          <a class="project-card reveal" href="https://drdashti.drpal.ai" target="_blank" rel="noopener">
+            <div class="project-thumb"><img src="assets/images/projects/drpal-web.svg" alt="Dr. Dashti Nutrition Platform preview" loading="lazy" /><span class="project-overlay">View Project →</span></div>
+            <div class="project-body"><span>04</span><h3>Dr. Dashti Nutrition Platform</h3><p>Professional nutrition and health consultation website built as part of the DrPal ecosystem with responsive UI and clear service presentation.</p></div>
+          </a>
+          <a class="project-card reveal delay-1" href="https://drsaidpour.drpal.ai/" target="_blank" rel="noopener">
+            <div class="project-thumb"><img src="assets/images/projects/drpal-web.svg" alt="Dr. Saidpour Platform preview" loading="lazy" /><span class="project-overlay">View Project →</span></div>
+            <div class="project-body"><span>05</span><h3>Dr. Saidpour Platform</h3><p>Medical consultation website focused on modern UI implementation, responsive pages and smooth user navigation.</p></div>
+          </a>
+          <a class="project-card reveal" href="https://drnaserdiet.drpal.ai/" target="_blank" rel="noopener">
+            <div class="project-thumb"><img src="assets/images/projects/drpal-web.svg" alt="Dr. Naser Diet Platform preview" loading="lazy" /><span class="project-overlay">View Project →</span></div>
+            <div class="project-body"><span>07</span><h3>Dr. Naser Diet Platform</h3><p>Doctor-focused nutrition website with responsive layouts, structured content and accessible user experience.</p></div>
+          </a>
+          <a class="project-card reveal delay-1" href="https://mana-x.ir" target="_blank" rel="noopener">
+            <div class="project-thumb"><img src="assets/images/projects/drpal-web.svg" alt="Mana-X Digital Twin Platform preview" loading="lazy" /><span class="project-overlay">View Project →</span></div>
+            <div class="project-body"><span>08</span><h3>Mana-X Digital Twin Platform</h3><p>Industrial Digital Twin web application experience focused on dashboard UI, scalable interfaces and technical team collaboration.</p></div>
+          </a>
         </div>
       </div>
     </section>
 
-
     <section class="section-padding app-showcase">
-      <div class="container cta glass reveal">
-        <div>
+      <div class="container app-showcase-grid reveal">
+        <div class="phone-mockup">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <img src="assets/images/projects/drpal-mobile.svg" alt="DrPal mobile app screen preview" loading="lazy" />
+          </div>
+        </div>
+        <div class="app-showcase-copy glass">
           <span>Mobile App Experience</span>
           <h2>Front-end contribution to the DrPal mobile application.</h2>
           <p>I worked on the front-end side of the DrPal application using React Native, contributing to mobile screens, user flows, API-connected interfaces and a smoother healthcare app experience.</p>
+          <a href="https://play.google.com/store/apps/details?id=com.saadrpalmobile&hl=en" target="_blank" rel="noopener" class="btn primary">View on Google Play</a>
         </div>
-        <a href="https://play.google.com/store/apps/details?id=com.saadrpalmobile&hl=en" target="_blank" rel="noopener" class="btn primary">View on Google Play</a>
       </div>
     </section>
+
     <section class="section-padding">
       <div class="container cta glass reveal">
         <div>
