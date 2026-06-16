@@ -226,11 +226,16 @@
       </div>
     </section>
 
-    <section id="chat" class="section-padding alt-section">
+    <section id="chat" class="section-padding alt-section chat-section">
+      <div class="chat-section-bg" aria-hidden="true">
+        <span class="chat-glow chat-glow-one"></span>
+        <span class="chat-glow chat-glow-two"></span>
+      </div>
       <div class="container">
         <div class="section-heading center reveal">
           <span>Chat</span>
           <h2>Chat with me about my experience.</h2>
+          <p>Ask about my skills, projects, or front-end work — powered by AI, available 24/7.</p>
         </div>
 
         <div class="chat-shell reveal delay-1">
@@ -246,18 +251,19 @@
             <div class="chat-intro-copy">
               <h3>What is this chat for?</h3>
               <p>
-                This is an AI assistant trained on my portfolio. You can ask about my skills, work experience, projects, tech stack, or availability — and get instant answers anytime, even when I'm not online. It's the fastest way for recruiters and collaborators to learn about my background.
+                This is an AI assistant trained on my portfolio. Ask about my skills, experience, projects, tech stack, or availability — and get instant answers anytime.
               </p>
             </div>
           </div>
 
-          <div class="chat-prompts" aria-label="Example questions">
-            <span class="chat-prompt">What are your main skills?</span>
-            <span class="chat-prompt">Tell me about DrPal</span>
-            <span class="chat-prompt">Are you open to work?</span>
+          <div class="chat-prompts stagger-group" aria-label="Example questions">
+            <span class="chat-prompt stagger-item">What are your main skills?</span>
+            <span class="chat-prompt stagger-item">Tell me about DrPal</span>
+            <span class="chat-prompt stagger-item">Are you open to work?</span>
           </div>
 
           <div class="chat-widget">
+            <div class="chat-widget-glow" aria-hidden="true"></div>
             <div class="chat-widget-header">
               <div class="chat-widget-avatar" aria-hidden="true">YG</div>
               <div class="chat-widget-meta">
@@ -281,17 +287,83 @@
     </section>
 
     <section id="contact" class="section-padding contact-section">
-      <div class="container contact-grid">
-        <div class="section-heading reveal">
+      <div class="contact-bg" aria-hidden="true">
+        <span class="contact-orb contact-orb-one"></span>
+        <span class="contact-orb contact-orb-two"></span>
+      </div>
+      <div class="container">
+        <div class="section-heading center reveal">
           <span>Contact</span>
           <h2>Get in touch with me.</h2>
-          <p>For job opportunities, freelance projects or collaboration, feel free to contact me.</p>
+          <p>For job opportunities, freelance projects or collaboration, feel free to reach out — I usually respond within 24 hours.</p>
         </div>
-        <div class="contact-card glass reveal delay-1">
-          <a href="mailto:yasaminghafariinfo@gmail.com">yasaminghafariinfo@gmail.com</a>
-          <a href="tel:09211929331">09211929331</a>
-          <p>Tehran, Iran</p>
-          <p>English · Professional Working Proficiency</p>
+
+        <div class="contact-shell">
+          <div class="contact-highlight glass reveal-scale">
+            <div class="contact-highlight-icon" aria-hidden="true">
+              <span class="contact-pulse"></span>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Open to front-end opportunities</strong>
+              <p>Remote, hybrid, or on-site roles — let's connect and build something great together.</p>
+            </div>
+            <a href="mailto:yasaminghafariinfo@gmail.com" class="btn primary contact-highlight-btn">Send Email</a>
+          </div>
+
+          <div class="contact-cards stagger-group">
+            <a href="mailto:yasaminghafariinfo@gmail.com" class="contact-item glass stagger-item">
+              <div class="contact-item-icon contact-item-icon--email" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div class="contact-item-body">
+                <span>Email</span>
+                <strong>yasaminghafariinfo@gmail.com</strong>
+              </div>
+              <span class="contact-item-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="tel:09211929331" class="contact-item glass stagger-item">
+              <div class="contact-item-icon contact-item-icon--phone" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="contact-item-body">
+                <span>Phone</span>
+                <strong>09211929331</strong>
+              </div>
+              <span class="contact-item-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <div class="contact-item glass stagger-item contact-item--static">
+              <div class="contact-item-icon contact-item-icon--location" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="contact-item-body">
+                <span>Location</span>
+                <strong>Tehran, Iran</strong>
+              </div>
+            </div>
+
+            <div class="contact-item glass stagger-item contact-item--static">
+              <div class="contact-item-icon contact-item-icon--lang" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div class="contact-item-body">
+                <span>Language</span>
+                <strong>English · Professional Working Proficiency</strong>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

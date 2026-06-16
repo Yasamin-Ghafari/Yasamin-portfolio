@@ -132,7 +132,7 @@ a {
 .hero-grid > *,
 .about-layout > *,
 .app-showcase-grid > *,
-.contact-grid > * {
+.contact-shell > * {
   min-width: 0;
 }
 
@@ -649,6 +649,17 @@ a {
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text) 40%, rgba(0, 229, 255, 0.85));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shimmerText 6s ease-in-out infinite;
+}
+
+@keyframes shimmerText {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
 }
 
 .section-heading p,
@@ -683,6 +694,13 @@ a {
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 20px;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 16px 40px rgba(124, 92, 255, 0.12);
 }
 
 .project-card {
@@ -796,6 +814,12 @@ a {
   border-radius: 50%;
   background: var(--brand2);
   box-shadow: 0 0 22px var(--brand2);
+  animation: timelinePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes timelinePulse {
+  0%, 100% { box-shadow: 0 0 22px var(--brand2); transform: scale(1); }
+  50% { box-shadow: 0 0 32px rgba(0, 229, 255, 0.8); transform: scale(1.12); }
 }
 
 .timeline-content {
@@ -981,12 +1005,56 @@ a {
   margin-top: 20px;
 }
 
-/* Chat widget */
+/* Chat section */
+.chat-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-section-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.chat-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  animation: chatGlowDrift 14s ease-in-out infinite;
+}
+
+.chat-glow-one {
+  width: 420px;
+  height: 420px;
+  top: 10%;
+  left: -10%;
+  background: rgba(124, 92, 255, 0.35);
+}
+
+.chat-glow-two {
+  width: 360px;
+  height: 360px;
+  bottom: 5%;
+  right: -8%;
+  background: rgba(0, 229, 255, 0.22);
+  animation-delay: -7s;
+}
+
+@keyframes chatGlowDrift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(24px, -18px); }
+}
+
 .chat-shell {
   max-width: 820px;
   margin: 48px auto 0;
   display: grid;
   gap: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .chat-intro {
@@ -995,6 +1063,13 @@ a {
   gap: 18px;
   padding: 22px 24px;
   border-radius: 20px;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.chat-intro:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 92, 255, 0.35);
+  box-shadow: 0 20px 50px rgba(124, 92, 255, 0.1);
 }
 
 .chat-intro-icon {
@@ -1007,6 +1082,12 @@ a {
   background: linear-gradient(135deg, rgba(124, 92, 255, 0.25), rgba(0, 229, 255, 0.15));
   border: 1px solid rgba(124, 92, 255, 0.3);
   color: var(--brand2);
+  animation: iconBob 3s ease-in-out infinite;
+}
+
+@keyframes iconBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 .chat-intro-copy h3 {
@@ -1037,13 +1118,24 @@ a {
   color: var(--muted);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
-  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  cursor: default;
+  animation: promptFloat 4s ease-in-out infinite;
+}
+
+.chat-prompt:nth-child(2) { animation-delay: 0.5s; }
+.chat-prompt:nth-child(3) { animation-delay: 1s; }
+
+@keyframes promptFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 .chat-prompt:hover {
   color: var(--text);
   border-color: rgba(124, 92, 255, 0.4);
   background: rgba(124, 92, 255, 0.08);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .chat-widget {
@@ -1057,6 +1149,28 @@ a {
     0 0 0 1px rgba(124, 92, 255, 0.08) inset;
   backdrop-filter: blur(24px);
   transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  animation: chatWidgetIn 0.8s ease both;
+}
+
+@keyframes chatWidgetIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chat-widget-glow {
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 0deg, transparent, rgba(124, 92, 255, 0.25), rgba(0, 229, 255, 0.2), transparent);
+  animation: spin 10s linear infinite;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .chat-widget::before {
@@ -1072,6 +1186,7 @@ a {
   pointer-events: none;
   opacity: 0.65;
   transition: opacity 0.35s ease;
+  z-index: 1;
 }
 
 .chat-widget:hover {
@@ -1079,7 +1194,7 @@ a {
   box-shadow:
     0 28px 90px rgba(124, 92, 255, 0.18),
     0 0 0 1px rgba(124, 92, 255, 0.12) inset;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .chat-widget:hover::before {
@@ -1093,6 +1208,8 @@ a {
   padding: 16px 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 2;
 }
 
 .chat-widget-avatar {
@@ -1108,6 +1225,12 @@ a {
   color: #05070d;
   background: linear-gradient(135deg, var(--brand), var(--brand2));
   box-shadow: 0 4px 16px rgba(124, 92, 255, 0.35);
+  animation: avatarPulse 3s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(124, 92, 255, 0.35); }
+  50% { box-shadow: 0 4px 24px rgba(0, 229, 255, 0.45); }
 }
 
 .chat-widget-meta {
@@ -1156,11 +1279,18 @@ a {
   color: var(--brand2);
   background: rgba(0, 229, 255, 0.1);
   border: 1px solid rgba(0, 229, 255, 0.25);
+  animation: badgeGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes badgeGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(0, 229, 255, 0); }
+  50% { box-shadow: 0 0 16px rgba(0, 229, 255, 0.25); }
 }
 
 .chat-widget-body {
   position: relative;
   background: var(--bg2);
+  z-index: 2;
 }
 
 .chat-widget-body::after {
@@ -1179,30 +1309,236 @@ a {
   background: var(--bg2);
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+/* Contact section */
+.contact-section {
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-card {
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.contact-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  animation: contactOrbFloat 16s ease-in-out infinite;
+}
+
+.contact-orb-one {
+  width: 500px;
+  height: 500px;
+  top: -20%;
+  right: -15%;
+  background: rgba(124, 92, 255, 0.3);
+}
+
+.contact-orb-two {
+  width: 400px;
+  height: 400px;
+  bottom: -15%;
+  left: -10%;
+  background: rgba(182, 255, 106, 0.12);
+  animation-delay: -8s;
+}
+
+@keyframes contactOrbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 20px) scale(1.08); }
+}
+
+.contact-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-highlight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
   border-radius: 24px;
-  padding: 28px;
-  display: grid;
-  gap: 12px;
+  flex-wrap: wrap;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.contact-card a,
-.contact-card p {
-  font-size: var(--text-md);
-  line-height: var(--leading-snug);
+.contact-highlight:hover {
+  transform: translateY(-4px);
+  border-color: rgba(182, 255, 106, 0.3);
+  box-shadow: 0 24px 60px rgba(124, 92, 255, 0.15);
+}
+
+.contact-highlight-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(182, 255, 106, 0.2), rgba(0, 229, 255, 0.12));
+  border: 1px solid rgba(182, 255, 106, 0.3);
+  color: var(--accent);
+}
+
+.contact-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid rgba(182, 255, 106, 0.4);
+  animation: contactPulseRing 2s ease-out infinite;
+}
+
+@keyframes contactPulseRing {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.contact-highlight strong {
+  display: block;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.contact-highlight p {
   color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  max-width: 420px;
+}
+
+.contact-highlight-btn {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: 22px;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(124, 92, 255, 0.12), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.contact-item:hover::before {
+  opacity: 1;
+}
+
+.contact-item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.contact-item-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  transition: transform 0.35s ease;
+}
+
+.contact-item:hover .contact-item-icon {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.contact-item-icon--email {
+  background: rgba(124, 92, 255, 0.15);
+  border: 1px solid rgba(124, 92, 255, 0.25);
+  color: var(--brand);
+}
+
+.contact-item-icon--phone {
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: var(--brand2);
+}
+
+.contact-item-icon--location {
+  background: rgba(182, 255, 106, 0.12);
+  border: 1px solid rgba(182, 255, 106, 0.25);
+  color: var(--accent);
+}
+
+.contact-item-icon--lang {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.contact-item-body {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-item-body span {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.contact-item-body strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--leading-snug);
   overflow-wrap: anywhere;
   word-break: break-word;
 }
 
-.contact-card a:hover {
+.contact-item-arrow {
+  flex-shrink: 0;
+  font-size: var(--text-lg);
   color: var(--brand2);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contact-item:hover .contact-item-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-item--static {
+  cursor: default;
 }
 
 .footer {
@@ -1231,6 +1567,29 @@ a {
 }
 
 .reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-scale.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.stagger-group.show .stagger-item,
+.stagger-item.show {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1411,10 +1770,24 @@ a {
 
   .hero-grid,
   .split,
-  .contact-grid,
   .about-layout,
   .app-showcase-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-highlight {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .contact-highlight-btn {
+    margin-left: 0;
+    width: 100%;
   }
 
   .about-photo {

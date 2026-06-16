@@ -31,11 +31,19 @@ window.addEventListener('resize', () => {
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('show');
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('show');
+
+    if (entry.target.classList.contains('stagger-group')) {
+      entry.target.querySelectorAll('.stagger-item').forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.1}s`;
+        item.classList.add('show');
+      });
+    }
   });
 }, { threshold: 0.16 });
 
-document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+document.querySelectorAll('.reveal, .reveal-scale, .stagger-group').forEach(element => observer.observe(element));
 
 if (glow && window.matchMedia('(pointer: fine)').matches) {
   window.addEventListener('mousemove', event => {
@@ -118,7 +126,7 @@ document.querySelectorAll('[data-count]').forEach(counter => {
   counterObserver.observe(counter);
 });
 
-document.querySelectorAll('.skill-card, .project-card, .timeline-content').forEach(card => {
+document.querySelectorAll('.skill-card, .project-card, .timeline-content, .contact-item').forEach(card => {
   card.addEventListener('mousemove', event => {
     const rect = card.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width) * 100;
@@ -126,4 +134,8 @@ document.querySelectorAll('.skill-card, .project-card, .timeline-content').forEa
     card.style.setProperty('--mouse-x', `${x}%`);
     card.style.setProperty('--mouse-y', `${y}%`);
   });
+});
+
+document.querySelectorAll('.chat-prompt').forEach((prompt, index) => {
+  prompt.style.animationDelay = `${index * 0.4}s`;
 });
